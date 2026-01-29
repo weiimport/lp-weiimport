@@ -1,6 +1,5 @@
 import { WHATSAPP_NUMBERS, WHATSAPP_DEFAULT_MESSAGE } from '../../constants';
 
-const ROTATION_INDEX_KEY = 'wei_whatsapp_rotation_index';
 const SESSION_NUMBER_KEY = 'wei_whatsapp_session_number';
 
 /**
@@ -25,24 +24,14 @@ export const getSessionWhatsAppNumber = (): string => {
 };
 
 /**
- * Obtém índice atual e incrementa para próximo visitante (round-robin)
+ * Seleciona índice aleatório para novo visitante
+ * Usa seleção aleatória pois não há backend para compartilhar rotação entre usuários
  */
 const getAndIncrementRotationIndex = (): number => {
-  const storedIndex = localStorage.getItem(ROTATION_INDEX_KEY);
-  const currentIndex = storedIndex ? parseInt(storedIndex, 10) : 0;
+  // Gerar índice aleatório entre 0 e WHATSAPP_NUMBERS.length - 1
+  const randomIndex = Math.floor(Math.random() * WHATSAPP_NUMBERS.length);
 
-  // Validar índice está dentro do array
-  const validIndex = isNaN(currentIndex) || currentIndex >= WHATSAPP_NUMBERS.length
-    ? 0
-    : currentIndex;
-
-  // Calcular próximo índice (round-robin: 0→1→2→0)
-  const nextIndex = (validIndex + 1) % WHATSAPP_NUMBERS.length;
-
-  // Guardar próximo índice para próxima sessão
-  localStorage.setItem(ROTATION_INDEX_KEY, nextIndex.toString());
-
-  return validIndex;
+  return randomIndex;
 };
 
 /**
