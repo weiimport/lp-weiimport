@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const IMAGES = [
-  '/images/gallery-slide-01.jpg',
-  '/images/gallery-slide-02.jpg',
-  '/images/gallery-slide-03.jpg',
-  '/images/gallery-slide-04.jpg',
+  '/images/gallery-slide-01.webp',
+  '/images/gallery-slide-02.webp',
+  '/images/gallery-slide-03.webp',
+  '/images/gallery-slide-04.webp',
+  '/images/gallery-slide-05.webp',
 ];
 
 const Gallery: React.FC = () => {
@@ -33,7 +34,7 @@ const Gallery: React.FC = () => {
       {/* Background Image with Transparency Effect */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/gallery-slide-02.jpg"
+          src="/images/gallery-slide-02.webp"
           alt="Wei Import Team Background"
           className="w-full h-full object-cover opacity-10"
           loading="lazy"
