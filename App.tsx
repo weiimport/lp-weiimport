@@ -1,5 +1,6 @@
 import React from 'react';
 import CookieConsent from 'react-cookie-consent';
+import { Analytics } from '@vercel/analytics/react';
 import Hero from './components/Hero';
 import Steps from './components/Steps';
 import Gallery from './components/Gallery';
@@ -20,6 +21,7 @@ function App() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <Analytics />
 
       <CookieConsent
         location="bottom"
